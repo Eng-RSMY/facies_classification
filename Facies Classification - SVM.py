@@ -73,9 +73,11 @@ def make_facies_log_plot(logs, facies_colors):
     divider = make_axes_locatable(ax[5])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im, cax=cax)
-    cbar.set_label((12*' ').join([' Sand ', 'C Silt', 'F Silt', 
-                                'Silt/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
-                                ' PackS ', ' BaffS ']))
+#    cbar.set_label((12*' ').join([' Sand ', 'C Silt', 'F Silt', 
+#                                'Silt/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+#                                ' PackS ', ' BaffS ']))
+
+    cbar.set_label((14*' ').join(facies_labels))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
     for i in range(len(ax)-1):
