@@ -26,6 +26,9 @@ Seaborn is used to create the following Matrix Plot:
 
 ![Matrix](matrix.png)
 
+The following is one more depth plot showing the predicted facies:
+
+![Results](results.png)
 
 Brendon provides some metrics to evaluate how well the classifier is doing. A confusion matrix is a table that is used to describe the performance of a classification model. Scikit-learn allows us to easily create a confusion matrix by supplying the actual and predicted facies labels. The confusion matrix is simply a 2D array. The entries of confusion matrix C[i][j] are equal to the number of observations predicted to have facies j, but are known to have facies i.
 
