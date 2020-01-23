@@ -44,4 +44,4 @@ The following images shows how well the program performs with a Blind Test where
 
 ![Blind](blind.png)
 
-I have changed the name of the Geologic Facies for the .py files to be a bit more intuitive.
+I have changed the name of the Geologic Facies for all the code files to be a bit more intuitive in the naming convention.
