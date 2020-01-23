@@ -7,6 +7,9 @@ The only think that I have provided is to update this repository on our fork onl
 
 The Jupyter Notebooks (Facies Classification - SVM - MATT.ipynb and Facies Classification - SVM.ipynb) examples written by Brendon are very helpful in understanding the programming. They show a step-by-step discussion of the code, concepts and example plots as shown below. These Notebooks are actual code and the plots are the actual results from running this code in Jupyter Notebook. We are using an Anaconda3 distro for our work which includes both Jupyter Notebook and Jupyter Lab. 
 
+The following are the Geologic Facies being predicted in this example:
+
+![Facies](facies.png)
 
 
 Example Depth Plot showing typical well logs and Geologic Facies:
