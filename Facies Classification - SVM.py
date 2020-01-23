@@ -27,8 +27,8 @@ training_data['Well Name'].unique()
 facies_colors = ['#F4D03F', '#F5B041','#DC7633','#6E2C00',
        '#1B4F72','#2E86C1', '#AED6F1', '#A569BD', '#196F3D']
 
-facies_labels = ['SS', 'CSiS', 'FSiS', 'SiSh', 'MS',
-                 'WS', 'D','PS', 'BS']
+facies_labels = ['Sand', 'CSilt', 'FSilt', 'Si/Sh', 'MudS',
+                 'WackS', 'Dolo','PackS', 'BaffS']
 
 
 #facies_color_map is a dictionary that maps facies labels
@@ -73,9 +73,9 @@ def make_facies_log_plot(logs, facies_colors):
     divider = make_axes_locatable(ax[5])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im, cax=cax)
-    cbar.set_label((17*' ').join([' SS ', 'CSiS', 'FSiS', 
-                                'SiSh', ' MS ', ' WS ', ' D  ', 
-                                ' PS ', ' BS ']))
+    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
+                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+                                ' PxkS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
     for i in range(len(ax)-1):
@@ -190,7 +190,7 @@ conf = confusion_matrix(y_test, predicted_labels)
 
 plt.figure()
 display_cm(conf, facies_labels, hide_zeros=False,display_metrics=False)
-print(conf)
+#print(conf)
 
 def accuracy(conf):
     total_correct = 0.
@@ -210,7 +210,7 @@ def accuracy_adjacent(conf, adjacent_facies):
         for j in adjacent_facies[i]:
             total_correct += conf[i][j]
     return total_correct / sum(sum(conf))
-	
+print()	
 print ('Facies classification accuracy = %f' % accuracy(conf))
 print ('Adjacent facies classification accuracy = %f' % accuracy_adjacent(conf, adjacent_facies))
 
@@ -259,7 +259,7 @@ clf = svm.SVC(C = 10, gamma = 1)
 clf.fit(X_train,y_train)
 
 cv_conf = confusion_matrix(y_test, clf.predict(X_test))
-
+print()
 print ('Optimized facies classification accuracy = %.2f' % accuracy(cv_conf))
 print ('Optimized adjacent facies classification accuracy = %.2f' % accuracy_adjacent(cv_conf, adjacent_facies))
 

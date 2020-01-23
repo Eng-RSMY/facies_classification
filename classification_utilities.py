@@ -25,7 +25,7 @@ def display_cm(cm, labels, hide_zeros=False,
     
     print()
     # Print header
-    print( "    " + " Pred", end=" ")  ,
+    print( "    " + " Pred >", end=" ")  ,
     for label in labels: 
         print( "%{0}s".format(columnwidth) % label, end=" ") ,
     print( "%{0}s".format(columnwidth) % 'Total', end=" ")

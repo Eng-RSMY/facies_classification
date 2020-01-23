@@ -21,9 +21,14 @@ training_data = pd.read_csv(filename)
 training_data
 
 print()
+print('Training Data')
 print(training_data)
 
+
 blind = training_data[training_data['Well Name'] == 'NEWBY']
+#notblind = training_data[training_data['Well Name'] == 'NOLAN']
+
+
 training_data = training_data[training_data['Well Name'] != 'NEWBY']
 
 training_data['Well Name'] = training_data['Well Name'].astype('category')
@@ -37,8 +42,13 @@ training_data['Well Name'].unique()
 facies_colors = ['#F4D03F', '#F5B041','#DC7633','#6E2C00',
        '#1B4F72','#2E86C1', '#AED6F1', '#A569BD', '#196F3D']
 
-facies_labels = ['SS', 'CSiS', 'FSiS', 'SiSh', 'MS',
-                 'WS', 'D','PS', 'BS']
+#facies_labels = ['SS', 'CSiS', 'FSiS', 'SiSh', 'MS',
+#                 'WS', 'D','PS', 'BS']
+
+facies_labels = ['Sand', 'CSilt', 'FSilt', 'Si/Sh', 'MudS',
+                 'WackS', 'Dolo','PackS', 'BaffS']
+
+
 #facies_color_map is a dictionary that maps facies labels
 #to their respective colors
 facies_color_map = {}
@@ -49,15 +59,18 @@ def label_facies(row, labels):
     return labels[ row['Facies'] -1]
     
 training_data.loc[:,'FaciesLabels'] = training_data.apply(lambda row: label_facies(row, facies_labels), axis=1)
+
+
 print()
+print('Training Data Described')
 print(training_data.describe())
 
 PE_mask = training_data['PE'].notnull().values
 training_data = training_data[PE_mask]
 
-print()
-print('training_data')
-print(training_data)
+#print()
+#print('Training Data')
+#print(training_data)
 
 
 def make_facies_log_plot(logs, facies_colors):
@@ -82,9 +95,9 @@ def make_facies_log_plot(logs, facies_colors):
     divider = make_axes_locatable(ax[5])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im, cax=cax)
-    cbar.set_label((17*' ').join([' SS ', 'CSiS', 'FSiS', 
-                                'SiSh', ' MS ', ' WS ', ' D  ', 
-                                ' PS ', ' BS ']))
+    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
+                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+                                ' PackS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
     for i in range(len(ax)-1):
@@ -132,6 +145,7 @@ facies_counts.plot(kind='bar',color=facies_colors,
 print()
 print('Facies Counts')
 print(facies_counts)
+print()
 
 #save plot display settings to change back to when done plotting with seaborn
 inline_rc = dict(mpl.rcParams)
@@ -139,6 +153,7 @@ inline_rc = dict(mpl.rcParams)
 import seaborn as sns
 
 print('Matrix Plot')
+
 sns.set()
 sns.pairplot(training_data.drop(['Well Name','Facies','Formation','Depth','NM_M','RELPOS'],axis=1),
              hue='FaciesLabels', palette=facies_color_map,
@@ -202,6 +217,9 @@ def accuracy_adjacent(conf, adjacent_facies):
             total_correct += conf[i][j]
     return total_correct / sum(sum(conf))
 
+
+
+
 print()
 print( 'Facies classification accuracy = %f' % accuracy(conf))
 print( 'Adjacent facies classification accuracy = %f' % accuracy_adjacent(conf, adjacent_facies))
@@ -259,6 +277,7 @@ clf.fit(X_train,y_train)
 cv_conf = confusion_matrix(y_test, clf.predict(X_test))
 #print(cv_conf)
 
+
 print()
 print( 'Optimized facies classification accuracy = %.2f' % accuracy(cv_conf))
 print( 'Optimized adjacent facies classification accuracy = %.2f' % accuracy_adjacent(cv_conf, adjacent_facies))
@@ -272,7 +291,11 @@ display_adj_cm(cv_conf, facies_labels, adjacent_facies,
 
 
 
+print()
+print('blind')
 print(blind)
+
+
 
 y_blind = blind['Facies'].values
 
@@ -287,6 +310,7 @@ blind['Prediction'] = y_pred
 
 
 cv_conf = confusion_matrix(y_blind, y_pred)
+
 
 print()
 print( 'Optimized facies classification accuracy = %.2f' % accuracy(cv_conf))
@@ -322,9 +346,9 @@ def compare_facies_plot(logs, compadre, facies_colors):
     divider = make_axes_locatable(ax[6])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im2, cax=cax)
-    cbar.set_label((17*' ').join([' SS ', 'CSiS', 'FSiS', 
-                                'SiSh', ' MS ', ' WS ', ' D  ', 
-                                ' PS ', ' BS ']))
+    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
+                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+                                ' PackS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
     for i in range(len(ax)-2):
@@ -354,7 +378,7 @@ def compare_facies_plot(logs, compadre, facies_colors):
     
     
 compare_facies_plot(blind, 'Prediction', facies_colors)
-
+#compare_facies_plot(notblind, 'Prediction', facies_colors)
 
 
 well_data = pd.read_csv('validation_data_nofacies.csv')
