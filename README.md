@@ -1,35 +1,43 @@
 ## Facies Classification
-This [notebook](https://github.com/Philliec459/facies_classification/blob/master/Facies%20Classification%20-%20SVM%20-%20MATT.ipynb) is from Brendon Hall. It is a great demonstration of using a machine learning algorithm (support vector machine) to assign facies to well log data.  This is great work from Brendon. 
+This repository and [notebook](https://github.com/Philliec459/facies_classification/blob/master/Facies%20Classification%20-%20SVM%20-%20MATT.ipynb) are from Brendon Hall. Brendon has developed a great demonstration of how to use the machine learning algorithm (support vector machine) to train well logs to be able to assign Geologic Facies.  This is great work from Brendon and an extremely useful example that should benefit the Petrophysical/Geological community greatly. 
 
-The training data from Brendon has been assembled based on expert core description combined with wireline data from nine wells.  These data are used to train a support vector machine to identify facies based only on wireline log data. Supervised training. This is based on a class exercise from the University of Kansas that can be [found online](http://www.people.ku.edu/~gbohling/EECS833/).  
+Brendon assembled the training data based on expert geologic core descriptions that are integrated with wireline log data for nine wells.  These data are used to train a support vector machine to identify facies based only on wireline log data. This is an example of supervised training. This example is based on a class exercise from the University of Kansas that can be [found online](http://www.people.ku.edu/~gbohling/EECS833/).  
 
-The only think that we have dome is update this repository on our fork to be compatible with Python 3.7. Brendon has done it all other that a few compatibility updates. 
+The only think that I have provided is to update this repository on our fork only to be compatible with the newest Python 3.7 libraries, and the rest is Brendon.  
 
-Please review the Jupyter Notebooks (Facies Classification - SVM - MATT.ipynb and Facies Classification - SVM.ipynb) written by Brendon. They show a step by step discussion of the code, concepts and example plots as shown below. These Notebooks are actual code and the plots are the results from running the code in the Notebook. 
+The Jupyter Notebooks (Facies Classification - SVM - MATT.ipynb and Facies Classification - SVM.ipynb) examples written by Brendon are very helpful in understanding the programming. They show a step-by-step discussion of the code, concepts and example plots as shown below. These Notebooks are actual code and the plots are the actual results from running this code in Jupyter Notebook. We are using an Anaconda3 distro for our work which includes both Jupyter Notebook and Jupyter Lab. 
 
 
 
-Example Depth Plot:
+Example Depth Plot showing typical well logs and Geologic Facies:
 
 ![Depth](logplot.png)
 
 
-Training Facies:
+The following is a histogram of the Training Data by Facies:
 
 ![Train](training_facies.png)
 
 
-Matrix Plot:
+Seaborn is used to create the following Matrix Plot:
 
 ![Matrix](matrix.png)
 
 
-Cross Validation Check:
+Brendon provides some metrics to evaluate how good the classifier is doing. A confusion matrix is a table that can be used to describe the performance of a classification model. Scikit-learn allows us to easily create a confusion matrix by supplying the actual and predicted facies labels. The confusion matrix is simply a 2D array. The entries of confusion matrix C[i][j] are equal to the number of observations predicted to have facies j, but are known to have facies i.
+
+To simplify reading the confusion matrix, Brendon wrote a function to display these matrix data along with facies labels and various error metrics. See the file classification_utilities.py in this repo for the display_cm() function.
+
+![Confusion](confusion.png)
+
+
+
+Often a separate 'cross validation' dataset will be created in addition to the training and test sets to do model selection. For this tutorial Brendon has just used the test set to choose the model parameters.
 
 ![Cross](cross_validation.png)
 
 
-Blind Test:
+The following images shows how well the program works with a Blind Test where the Newby well was held back from the training data set:
 
 ![Blind](blind.png)
 
