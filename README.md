@@ -5,6 +5,10 @@ The training data from Brendon has been assembled based on expert core descripti
 
 The only think that we have dome is update this repository on our fork to be compatible with Python 3.7. Brendon has done it all other that a few compatibility updates. 
 
+Please review the Jupyter Notebooks (Facies Classification - SVM - MATT.ipynb and Facies Classification - SVM.ipynb) written by Brendon. They show a step by step discussion of the code, concepts and example plots as shown below. These Notebooks are actual code and the plots are the results from running the code in the Notebook. 
+
+
+
 Example Depth Plot:
 
 ![Depth](logplot.png)
