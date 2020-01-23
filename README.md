@@ -24,20 +24,20 @@ Seaborn is used to create the following Matrix Plot:
 ![Matrix](matrix.png)
 
 
-Brendon provides some metrics to evaluate how good the classifier is doing. A confusion matrix is a table that can be used to describe the performance of a classification model. Scikit-learn allows us to easily create a confusion matrix by supplying the actual and predicted facies labels. The confusion matrix is simply a 2D array. The entries of confusion matrix C[i][j] are equal to the number of observations predicted to have facies j, but are known to have facies i.
+Brendon provides some metrics to evaluate how well the classifier is doing. A confusion matrix is a table that is used to describe the performance of a classification model. Scikit-learn allows us to easily create a confusion matrix by supplying the actual and predicted facies labels. The confusion matrix is simply a 2D array. The entries of confusion matrix C[i][j] are equal to the number of observations predicted to have facies j, but are known to have facies i.
 
-To simplify reading the confusion matrix, Brendon wrote a function to display these matrix data along with facies labels and various error metrics. See the file classification_utilities.py in this repo for the display_cm() function.
+To simplify reading the confusion matrix, Brendon has written a function to display these matrix data along with facies labels and various error metrics. Please see the file classification_utilities.py in this repo for the display_cm() function.
 
-![Confusion](confusion.png)
+![Confuse](confusion.png)
 
 
 
-Often a separate 'cross validation' dataset will be created in addition to the training and test sets to do model selection. For this tutorial Brendon has just used the test set to choose the model parameters.
+Often a separate 'cross validation' dataset will be created in addition to the training and test sets to do model selection. For this tutorial Brendon has used just the test set to choose the final model parameters. The best accuracy on the cross validation error curve was achieved for gamma = 1, and C = 10. We can now create and train an optimized classifier based on these parameters.
 
 ![Cross](cross_validation.png)
 
 
-The following images shows how well the program works with a Blind Test where the Newby well was held back from the training data set:
+The following images shows how well the program performs with a Blind Test where the Newby well was held back from the training data set and the following are the results. 
 
 ![Blind](blind.png)
 
