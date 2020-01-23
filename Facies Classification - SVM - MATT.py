@@ -45,7 +45,7 @@ facies_colors = ['#F4D03F', '#F5B041','#DC7633','#6E2C00',
 #facies_labels = ['SS', 'CSiS', 'FSiS', 'SiSh', 'MS',
 #                 'WS', 'D','PS', 'BS']
 
-facies_labels = ['Sand', 'CSilt', 'FSilt', 'Si/Sh', 'MudS',
+facies_labels = ['Sand', 'C Silt', 'F Silt', 'Silt/Sh', 'MudS',
                  'WackS', 'Dolo','PackS', 'BaffS']
 
 
@@ -95,8 +95,8 @@ def make_facies_log_plot(logs, facies_colors):
     divider = make_axes_locatable(ax[5])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im, cax=cax)
-    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
-                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+    cbar.set_label((12*' ').join([' Sand ', 'C Silt', 'F Silt', 
+                                'Silt/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
                                 ' PackS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
@@ -346,8 +346,8 @@ def compare_facies_plot(logs, compadre, facies_colors):
     divider = make_axes_locatable(ax[6])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im2, cax=cax)
-    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
-                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+    cbar.set_label((12*' ').join([' Sand ', 'C Silt', 'F Silt', 
+                                'Silt/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
                                 ' PackS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     

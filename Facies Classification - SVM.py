@@ -27,7 +27,7 @@ training_data['Well Name'].unique()
 facies_colors = ['#F4D03F', '#F5B041','#DC7633','#6E2C00',
        '#1B4F72','#2E86C1', '#AED6F1', '#A569BD', '#196F3D']
 
-facies_labels = ['Sand', 'CSilt', 'FSilt', 'Si/Sh', 'MudS',
+facies_labels = ['Sand', 'C Silt', 'F Silt', 'Silt/Sh', 'MudS',
                  'WackS', 'Dolo','PackS', 'BaffS']
 
 
@@ -73,9 +73,9 @@ def make_facies_log_plot(logs, facies_colors):
     divider = make_axes_locatable(ax[5])
     cax = divider.append_axes("right", size="20%", pad=0.05)
     cbar=plt.colorbar(im, cax=cax)
-    cbar.set_label((17*' ').join([' Sand ', 'CSilt', 'FSilt', 
-                                'Si/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
-                                ' PxkS ', ' BaffS ']))
+    cbar.set_label((12*' ').join([' Sand ', 'C Silt', 'F Silt', 
+                                'Silt/Sh', ' MudS ', ' WackS ', ' Dolo  ', 
+                                ' PackS ', ' BaffS ']))
     cbar.set_ticks(range(0,1)); cbar.set_ticklabels('')
     
     for i in range(len(ax)-1):
